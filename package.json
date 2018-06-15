@@ -5,6 +5,10 @@
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
+    "dev": "nf start",
+    "start":"ionic-app-scripts serve",
+    "electron dist": "electron .",
+    "ebuild":"npm run build && node_modules/.bin/build",
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
@@ -33,7 +37,24 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.10",
+    "electron": "^2.0.2",
+    "electron-builder": "^20.15.1",
+    "foreman": "^3.0.0",
     "typescript": "~2.6.2"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "main": "electron/electron.js",
+  "config": {
+    "ionic_bundler": "webpack",
+    "ionic_webpack": "./config/webpack.config.js"
+  },
+  "build": {
+    "appId": "com.nouco.ionic-electron-test",
+    "electronVersion": "2.0.2",
+    "asar": false,
+    "files": [
+      "www/**/*",
+      "electron/*"
+    ]
+  }
 }
