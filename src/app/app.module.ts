@@ -14,6 +14,7 @@ import { AboutPage } from '../pages/about/about';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { SearchBarComponent } from '../components/search-bar/search-bar';
 
 @NgModule({
   declarations: [
