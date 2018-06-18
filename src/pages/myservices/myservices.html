@@ -1,0 +1,25 @@
+<ion-content >
+    My Services
+    <ion-list>
+        <ion-item *ngFor="let service of services">
+            <h1>{{ service.title }}</h1>
+        </ion-item>
+    </ion-list>
+
+     <ion-slides loop slidesPerView=2>
+            <ion-slide *ngFor="let service of services">
+                <ion-card>
+
+                    <ion-card-header>
+                            {{ service.title }}
+                    </ion-card-header>
+                    
+                    <ion-card-content>
+                        <!-- Add card content here! -->
+                    </ion-card-content>
+                        
+                </ion-card>
+            </ion-slide>
+    </ion-slides>
+</ion-content>
+  

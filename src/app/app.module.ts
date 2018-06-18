@@ -3,10 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { HomePage } from '../pages/home/home';
+import { ServicePage } from '../pages/service/service'
+import { MyServicesPage } from '../pages/myservices/myservices'
+import { MyWorkshopsPage } from '../pages/myworkshops/myworkshops'
+import { CreateWorkshopPage } from '../pages/createworkshop/createworkshop'
+import { ProfilePage } from '../pages/profile/profile'
+import { AboutPage } from '../pages/about/about';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -14,10 +18,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    TabsPage,
     HomePage,
-    TabsPage
+    ServicePage,
+    MyServicesPage,
+    MyWorkshopsPage,
+    CreateWorkshopPage,
+    ProfilePage,
+    AboutPage,
+    SearchBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,10 +35,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    TabsPage,
     HomePage,
-    TabsPage
+    ServicePage,
+    MyServicesPage,
+    MyWorkshopsPage,
+    CreateWorkshopPage,
+    ProfilePage,
+    AboutPage,
   ],
   providers: [
     StatusBar,
