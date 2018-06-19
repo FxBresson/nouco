@@ -1,4 +1,34 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Service</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
 <ion-content padding>
-    Service
+    <div>
+        <h3>{{ service.title }}</h3>
+        <h4>{{ service.categorie }}</h4>
+    </div>
+    <p>
+        {{ service.description }}
+    </p>
+
+    <ion-list *ngFor="let infoCat of service.infos">
+        <h4>{{ infoCat.name }}</h4>
+        <ion-item *ngFor="let option of infoCat.options">{{ option }}</ion-item>
+    </ion-list>
+
+
+    <div *ngIf="!service.instance">
+        <button (click)="selectService(service.id)">Y Participer</button>
+    </div>
+
+    <div *ngIf="service.payement=='physic'">
+        <img>
+    </div>
+    <div *ngIf="service.payement=='credit'">
+        Vous avez été débité
+    </div>
 </ion-content>
   

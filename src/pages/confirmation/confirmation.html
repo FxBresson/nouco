@@ -1,0 +1,31 @@
+<!--
+  Generated template for the ConfirmationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>confirmation</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div *ngIf="method=='physic'">
+    <img>
+    <p>Voici le QR Code</p>
+  </div>
+
+  <div *ngIf="method=='credit'">
+    <p>Vous avez été débités</p>
+  </div>
+  
+
+  <button (click)="goBackToHome()">OK</button>
+  
+
+</ion-content>

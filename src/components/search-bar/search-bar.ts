@@ -1,4 +1,10 @@
 import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { ServicePage } from '../../pages/service/service';
+import { MyApp } from '../../app/app.component';
+import { ApiRequestProvider } from '../../providers/api-request/api-request';
+import { SearchPage } from '../../pages/search/search';
+
 
 /**
  * Generated class for the SearchBarComponent component.
@@ -12,11 +18,45 @@ import { Component } from '@angular/core';
 })
 export class SearchBarComponent {
 
-  text: string;
+  catToDisplay: Array<any>;
 
-  constructor() {
-    console.log('Hello SearchBar Component');
-    this.text = 'Hello World';
+  constructor(public navCtrl: NavController, public app: MyApp, public apiProvider: ApiRequestProvider) {
   }
 
+  initCats(cb = new Function()) {
+    this.apiProvider.get('/categories').then(function(cats) {
+      this.catToDisplay = cats;
+      cb()
+    }.bind(this))
+  }
+
+  filterCat(e) {
+    this.initCats(function() {
+
+      const val = e.target.value;
+
+      if (val && val.trim() != '') {
+        this.catToDisplay = this.catToDisplay.filter((item) => {
+          return (item.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        })
+
+        console.log(this.catToDisplay)
+      }
+    }.bind(this));
+  }
+
+  goToCat(cat) {
+    this.navCtrl.push(SearchPage, {
+      categorie: cat,
+    });
+  }
+
+
+  reset() {
+    console.log('reset')
+    this.catToDisplay = [];
+  }
+  
+
+   
 }

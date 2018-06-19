@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { ServiceComponent } from '../../components/service/service';
+import { ApiRequestProvider } from '../../providers/api-request/api-request';
 
 @Component({
   selector: 'page-home',
@@ -8,88 +10,15 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
 
   sections: Array<{}>;
+  workshops: Array<{}>;
+  
+  constructor(public navCtrl: NavController, public apiProvider: ApiRequestProvider) {
 
-
-  constructor(public navCtrl: NavController) {
-
-    this.sections = [
-      {
-        sectionId: 'services',
-        sectionTitle: 'Trouver un service',
-        nbCards: 2,
-        cards: [
-          {
-            cardId: 'service-1',
-            title: 'Service 1',
-            description: 'Description du service 1',
-            img: ''
-          },
-          {
-            cardId: 'service-2',
-            title: 'Service 2',
-            description: 'Description du service 2',
-            img: ''
-          },
-          {
-            cardId: 'service-3',
-            title: 'Service 3',
-            description: 'Description du service 3',
-            img: ''
-          }
-        ]
-      },
-      {
-        sectionId: 'news',
-        sectionTitle: 'Les nouveautés',
-        nbCards: 1,
-        cards: [
-          {
-            cardId: 'service-1',
-            title: 'Service 1',
-            description: 'Description du service 1',
-            img: ''
-          },
-          {
-            cardId: 'service-2',
-            title: 'Service 2',
-            description: 'Description du service 2',
-            img: ''
-          },
-          {
-            cardId: 'service-3',
-            title: 'Service 3',
-            description: 'Description du service 3',
-            img: ''
-          }
-        ]
-      },
-      {
-        sectionId: 'workshops',
-        sectionTitle: 'Les Ateliers',
-        nbCards: 2,
-        cards: [
-          {
-            cardId: 'service-1',
-            title: 'Service 1',
-            description: 'Description du service 1',
-            img: ''
-          },
-          {
-            cardId: 'service-2',
-            title: 'Service 2',
-            description: 'Description du service 2',
-            img: ''
-          },
-          {
-            cardId: 'service-3',
-            title: 'Service 3',
-            description: 'Description du service 3',
-            img: ''
-          }
-        ]
-      },
-    ]
+    this.apiProvider.get('/db').then(function(db) {
+      this.wokshops = db.workshops.filter(x => { return x.date > new Date().getTime() });
+      this.services = db.services;
+      this.categories = db.categories;
+    }.bind(this))
 
   }
-
 }

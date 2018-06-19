@@ -1,0 +1,11 @@
+<!-- Generated template for the CategorieComponent component -->
+<ion-card (click)="goToCat(categorie)">
+  <ion-card-header>
+    {{ categorie.title }}
+  </ion-card-header>
+
+  <ion-card-content *ngIf="categorie.mode=='full'">
+    {{ categorie.description }}
+  </ion-card-content>
+
+</ion-card>

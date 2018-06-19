@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { ApiRequestProvider } from '../../providers/api-request/api-request';
+import { CreateWorkshopPage } from '../createworkshop/createworkshop';
 
 @Component({
   selector: 'page-myworkshops',
@@ -9,50 +11,37 @@ export class MyWorkshopsPage {
 
   pastWS: Array<{}>
   futurWS: Array<{}>
-  showPast: Boolean
+  showPast: Boolean = true;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public apiProvider: ApiRequestProvider) {
 
-    this.showPast = true;
+    
+  }
 
-    this.pastWS = [
-      {
-        cardId: 'service-1',
-        cat: 'Catégorie',
-        title: 'Service 1 - PAST',
-        description: 'Description du service 1',
-        img: ''
-      },
-      {
-        cardId: 'service-2',
-        cat: 'Catégorie',        
-        title: 'Service 2 - PAST',
-        description: 'Description du service 2',
-        img: ''
+  ionViewDidEnter() {
+    this.getMyWorkshops()
+  }
+  
+  getMyWorkshops() {
+    this.apiProvider.getWorkshop('/workshops?host=1', function(workshops) {
+
+      this.pastWS = workshops.filter(x => { return x.date <= new Date().getTime() })
+
+      for (let workshop of this.pastWS) {
+        workshop.instance = true;
       }
-    ]
 
-    this.futurWS = [
-      {
-        cardId: 'service-1',
-        cat: 'Catégorie',
-        title: 'Service 1 - FUTUR',
-        description: 'Description du service 1',
-        img: ''
-      },
-      {
-        cardId: 'service-2',
-        cat: 'Catégorie',        
-        title: 'Service 2 - FUTUR',
-        description: 'Description du service 2',
-        img: ''
-      }
-    ]
+      this.futurWS = workshops.filter(x => { return x.date > new Date().getTime() })
+      
+    }.bind(this)) 
   }
 
   showPastWS(bool) {
     this.showPast = bool;
-    console.log(this.showPast)
+  }
+
+  createWorkshop() {
+    this.navCtrl.push(CreateWorkshopPage)
   }
 
 }

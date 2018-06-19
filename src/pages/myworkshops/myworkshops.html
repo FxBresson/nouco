@@ -6,32 +6,24 @@
 
     <ion-list *ngIf="showPast">
         <ion-item *ngFor="let card of pastWS">
-            <ion-card>
-                <ion-card-header>
-                    {{ card.title }}
-                </ion-card-header>
-        
-                <ion-card-content>
-                    {{ card.cat }} <br>
-                    {{ card.description }}              
-                </ion-card-content>
-            </ion-card>
+            <workshop
+                [workshop]= card
+            >
+            </workshop>
         </ion-item>
     </ion-list>
 
     <ion-list *ngIf="!showPast">
         <ion-item *ngFor="let card of futurWS">
-            <ion-card>
-                <ion-card-header>
-                    {{ card.title }}
-                </ion-card-header>
-        
-                <ion-card-content>
-                    {{ card.cat }} <br>
-                    {{ card.description }}              
-                </ion-card-content>
-            </ion-card>
+            <workshop
+                [workshop]= card
+            >
+            </workshop>
         </ion-item>
     </ion-list>
+
+    <ion-fab>
+        <button ion-fab (click)="createWorkshop()">Add Workshop</button>
+    </ion-fab>
 
 </ion-content>

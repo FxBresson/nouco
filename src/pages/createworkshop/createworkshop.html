@@ -1,4 +1,26 @@
 <ion-content padding>
-    Create Workshop
+    <form (submit)=createWorkshop($event)>
+
+        <ion-item>
+            <ion-label>Titre</ion-label>
+            <ion-input [formControl]="formHandler.controls['title']"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Lieu</ion-label>
+            <ion-input [formControl]="formHandler.controls['place']"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Start Time</ion-label>
+            <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [formControl]="formHandler.controls['date']"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+            <ion-textarea placeholder="Enter a description" [formControl]="formHandler.controls['description']"></ion-textarea>
+        </ion-item>
+
+        <button type="submit">Ajouter</button>
+    </form>
 </ion-content>
   

@@ -1,0 +1,13 @@
+<!-- Generated template for the WorkshopComponent component -->
+<ion-card (click)="goToWokshop(workshop)">
+
+    <ion-card-header>
+      {{ workshop.title }}
+    </ion-card-header>
+  
+    <ion-card-content *ngIf="workshop.mode=='full'">
+      {{ workshop.description }}
+    </ion-card-content>
+  
+  </ion-card>
+  

@@ -1,0 +1,12 @@
+<!-- Generated template for the ServiceComponent component -->
+<ion-card (click)="goToService(service)">
+
+  <ion-card-header>
+    {{ service.title }}
+  </ion-card-header>
+
+  <ion-card-content *ngIf="service.mode=='full'">
+    {{ service.description }}
+  </ion-card-content>
+
+</ion-card>
