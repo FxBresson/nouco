@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { ServiceComponent } from '../../components/service/service';
 import { ApiRequestProvider } from '../../providers/api-request/api-request';
 
 @Component({
@@ -15,7 +14,8 @@ export class HomePage {
   constructor(public navCtrl: NavController, public apiProvider: ApiRequestProvider) {
 
     this.apiProvider.get('/db').then(function(db) {
-      this.wokshops = db.workshops.filter(x => { return x.date > new Date().getTime() });
+      let workshops = db.workshops.filter(x => { return x.date > new Date().getTime() });
+      this.workshops = this.apiProvider.processWorkshops(workshops, db.users)
       this.services = db.services;
       this.categories = db.categories;
     }.bind(this))

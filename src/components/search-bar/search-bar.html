@@ -1,7 +1,11 @@
 <!-- Generated template for the SearchBarComponent component -->
-<ion-searchbar (ionInput)="filterCat($event)" (ionBlur)="reset()"></ion-searchbar>
-<ion-list>
-  <ion-item *ngFor="let cat of catToDisplay" (click)="goToCat(cat)">
-    <div>{{ cat.title }}</div>
-  </ion-item>
-</ion-list>
+<!-- <ion-searchbar (ionInput)="filterCat($event)" (ionBlur)="reset()"></ion-searchbar> -->
+<div>
+  <ion-searchbar [(ngModel)]="mySearch" (ionFocus)="focus()" (ionBlur)="unfocus()"></ion-searchbar>
+  <ion-list *ngIf="isFocused">
+    <ion-item *ngFor="let cat of catToDisplay" (click)="goToCat(cat)">
+      <div>{{ cat.title }}</div>
+    </ion-item>
+  </ion-list>
+</div>
+  

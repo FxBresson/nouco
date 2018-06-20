@@ -1,34 +1,69 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>Service</ion-title>
+        <ion-title>
+            <h1>{{ service.title }}</h1>
+            </ion-title>
     </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
+
+    <img class="hero" src="{{ service.image }}" alt="">
+
     <div>
-        <h3>{{ service.title }}</h3>
-        <h4>{{ service.categorie }}</h4>
+    
+        <div class="description">
+            {{ service.description }}
+        </div>
+
+        <div *ngIf="service.id!=3" >
+            <ion-list *ngFor="let infoCat of service.infos">
+                <h4>{{ infoCat.name }}</h4>
+                <ion-item *ngFor="let option of infoCat.options">{{ option }}</ion-item>
+            </ion-list>
+        </div>
+        
+
+        <div *ngIf="service.id==3">
+            <ion-list>
+                <h4>{{ service.infos[0].name }}</h4>
+                <ion-item *ngFor="let resto of service.infos[0].options">
+                    <ion-card>
+                        <img src="{{ resto.image }}" alt="">
+                        {{ resto.name }}
+                    </ion-card>
+                    <ion-list>
+                        <ion-item *ngFor="let menu of resto.menus">
+                            <ion-card>
+                                <img src="menu.image" alt="">
+                                <div>
+                                    {{ menu.name }}
+                                    {{ menu.description }}
+                                    {{ menu.price }}
+                                </div>
+                            </ion-card>
+                        </ion-item>
+                    </ion-list>
+                </ion-item>
+            </ion-list>
+            <ion-list>
+                <h4>{{ service.infos[1].name }}</h4>
+                <ion-item *ngFor="let option of service.infos[1].options">{{ option }}</ion-item>
+            </ion-list>
+        </div>
+
+        <div class="actionBar" *ngIf="!service.instance">
+            <button (click)="selectService()">Request ce service</button>
+        </div>
+
     </div>
-    <p>
-        {{ service.description }}
-    </p>
 
-    <ion-list *ngFor="let infoCat of service.infos">
-        <h4>{{ infoCat.name }}</h4>
-        <ion-item *ngFor="let option of infoCat.options">{{ option }}</ion-item>
-    </ion-list>
-
-
-    <div *ngIf="!service.instance">
-        <button (click)="selectService(service.id)">Y Participer</button>
-    </div>
-
-    <div *ngIf="service.payement=='physic'">
+    <!-- <div *ngIf="service.payement=='physic'">
         <img>
     </div>
     <div *ngIf="service.payement=='credit'">
         Vous avez été débité
-    </div>
+    </div> -->
 </ion-content>
   

@@ -5,35 +5,52 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>workshop</ion-title>
+    <ion-title>
+      <h1>{{ workshop.title }}</h1>      
+    </ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
+
+    <img class="hero" src="{{ workshop.image }}" alt="">
+
     <div>
-        <h3>{{ workshop.title }}</h3>
-        <h4>{{ workshop.categorie }}</h4>
-    </div>
-    <p>
-      Host : 
-      {{ workshop.host.name }}
-    </p>
-    <div>
-      Contributors : 
-      <div *ngFor="let person of workshop.contributors">
-        {{ person.name }}
+      <div class="workshopCat">ATELIER</div>
+
+      <div class="host">
+        <img src="{{ workshop.host.avatar }}" alt="">
+        <div>
+          <p>Organisé par</p>
+          <p class="hostName">{{ workshop.host.name }}</p>
+        </div>
       </div>
+
+      <div class="infos">
+        <div><b>Le :</b>{{ workshop.day }}</div>
+        <div><b>A :</b>{{ workshop.time }}</div>
+        <div><b>A :</b>{{ workshop.place }}</div>
+      </div>
+
+      <div class="description">
+          {{ workshop.description }}
+      </div>
+
+      <div class="contributors">
+          <div>Participants</div>
+          <div class="contributorsCtn">
+            <div class="contributor" *ngFor="let person of workshop.contributors">
+              <img src="{{ person.avatar }}" alt="">
+              <span>{{ person.name }}</span>
+            </div>
+          </div>
+        </div>
     </div>
-    <p>
-        {{ workshop.description }}
-    </p>
-
-
-    <div *ngIf="!workshop.instance">
+ 
+    <div class="actionBar" *ngIf="!workshop.instance">
+        <div *ngIf="workshop.contributors">Deja <b>{{ workshop.contributors.length }} participants !</b></div>
         <button (click)="register()">Y Participer</button>
     </div>
 </ion-content>

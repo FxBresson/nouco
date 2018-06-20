@@ -1,3 +1,11 @@
 page-myworkshops {
-    
+    .selectListBtns {
+        button {
+            @include pillBtn()
+
+            &.selected {
+                color: color($colors, secondary);
+            }
+        }
+    }
 }

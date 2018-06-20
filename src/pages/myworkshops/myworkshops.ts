@@ -9,9 +9,10 @@ import { CreateWorkshopPage } from '../createworkshop/createworkshop';
 })
 export class MyWorkshopsPage {
 
-  pastWS: Array<{}>
-  futurWS: Array<{}>
-  showPast: Boolean = true;
+  pastWS: Array<{}> = [];
+  futurWS: Array<{}> = [];
+  futurHostedWS: Array<{}> = [];
+  listShown: String = 'futurWS';
 
   constructor(public navCtrl: NavController, public apiProvider: ApiRequestProvider) {
 
@@ -23,21 +24,45 @@ export class MyWorkshopsPage {
   }
   
   getMyWorkshops() {
-    this.apiProvider.getWorkshop('/workshops?host=1', function(workshops) {
+    this.pastWS = [];
+    this.futurWS = [];
+    this.futurHostedWS = [];
 
-      this.pastWS = workshops.filter(x => { return x.date <= new Date().getTime() })
+    this.apiProvider.getWorkshop('/workshops', function(workshops) {
 
-      for (let workshop of this.pastWS) {
-        workshop.instance = true;
+      let today = new Date().getTime();
+
+      for (let ws of workshops) {
+        
+        if (ws.host.id == 1) {
+          ws.instance = true;
+          if (ws.date > today) {
+            this.futurHostedWS.push(ws)
+          } else {
+            this.pastWS.push(ws)
+          }
+        } 
+        if (ws.contributors) {
+          ws.instance = true;
+          if (ws.contributors.find(x => { return x.id == 1})) {
+            if (ws.date > today) {
+              this.futurWS.push(ws)
+            } else {
+              this.pastWS.push(ws)
+            }
+          }
+        }
       }
 
-      this.futurWS = workshops.filter(x => { return x.date > new Date().getTime() })
+      console.log(this.pastWS)
+      console.log(this.futurWS)
+      console.log(this.futurHostedWS)
       
     }.bind(this)) 
   }
 
-  showPastWS(bool) {
-    this.showPast = bool;
+  showList(list) {
+    this.listShown = list;
   }
 
   createWorkshop() {

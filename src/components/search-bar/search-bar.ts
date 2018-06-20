@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { ServicePage } from '../../pages/service/service';
 import { MyApp } from '../../app/app.component';
 import { ApiRequestProvider } from '../../providers/api-request/api-request';
 import { SearchPage } from '../../pages/search/search';
@@ -19,44 +18,53 @@ import { SearchPage } from '../../pages/search/search';
 export class SearchBarComponent {
 
   catToDisplay: Array<any>;
+  mySearch: String;
+  isFocused: Boolean = false;
 
   constructor(public navCtrl: NavController, public app: MyApp, public apiProvider: ApiRequestProvider) {
-  }
 
-  initCats(cb = new Function()) {
     this.apiProvider.get('/categories').then(function(cats) {
       this.catToDisplay = cats;
-      cb()
     }.bind(this))
   }
 
-  filterCat(e) {
-    this.initCats(function() {
+  // initCats(cb = new Function()) {
+  //   this.apiProvider.get('/categories').then(function(cats) {
+  //     this.catToDisplay = cats;
+  //     cb()
+  //   }.bind(this))
+  // }
 
-      const val = e.target.value;
+  // filterCat(e) {
+  //   this.initCats(function() {
 
-      if (val && val.trim() != '') {
-        this.catToDisplay = this.catToDisplay.filter((item) => {
-          return (item.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
-        })
+  //     const val = e.target.value;
 
-        console.log(this.catToDisplay)
-      }
-    }.bind(this));
-  }
+  //     if (val && val.trim() != '') {
+  //       this.catToDisplay = this.catToDisplay.filter((item) => {
+  //         return (item.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
+  //       })
+
+  //       console.log(this.catToDisplay)
+  //     }
+  //   }.bind(this));
+  // }
 
   goToCat(cat) {
     this.navCtrl.push(SearchPage, {
-      categorie: cat,
+      category: cat,
+      mySearch: this.mySearch
     });
   }
 
-
-  reset() {
-    console.log('reset')
-    this.catToDisplay = [];
+  focus() {
+    this.isFocused = true;
   }
-  
 
-   
+  unfocus() {
+    setTimeout(function() {
+      this.isFocused = false;
+    }.bind(this), 200)
+  }
+     
 }

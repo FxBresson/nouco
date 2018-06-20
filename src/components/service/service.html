@@ -1,12 +1,8 @@
 <!-- Generated template for the ServiceComponent component -->
 <ion-card (click)="goToService(service)">
-
   <ion-card-header>
-    {{ service.title }}
+    <div>{{ service.cat.title }}</div>
+    <h4>{{ service.title }}</h4>
   </ion-card-header>
-
-  <ion-card-content *ngIf="service.mode=='full'">
-    {{ service.description }}
-  </ion-card-content>
-
+  <img class="background-image" src="{{service.image}}">
 </ion-card>

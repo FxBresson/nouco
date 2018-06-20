@@ -1,13 +1,9 @@
 <!-- Generated template for the WorkshopComponent component -->
 <ion-card (click)="goToWokshop(workshop)">
-
     <ion-card-header>
-      {{ workshop.title }}
-    </ion-card-header>
-  
-    <ion-card-content *ngIf="workshop.mode=='full'">
-      {{ workshop.description }}
-    </ion-card-content>
-  
+        <div>Atelier</div>
+        <h4>{{ workshop.title }}</h4>
+      </ion-card-header>
+    <img class="background-image" src="{{workshop.image}}">
   </ion-card>
   

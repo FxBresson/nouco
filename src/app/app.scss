@@ -14,3 +14,79 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+
+#gradient {
+}
+
+ion-header {
+    background: $gradient;
+}
+
+ion-searchbar {}
+
+.toolbar-background-md {
+    background: transparent;
+}
+.toolbar-title-md, .back-button.show-back-button, .bar-button-default-md:hover:not(.disable-hover) {
+    color: color($colors, light);
+}
+
+workshop, categorie, service {
+    ion-card {
+        position: relative;
+    }
+    ion-card-header {
+        background-color: rgba(255, 255, 255, 0.6);
+        text-align: left;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        & > div {
+
+        }
+        h4 {
+    
+        }
+    }
+}
+
+ion-navbar {
+    text-align: center;
+}
+
+ion-title {
+
+    font-size: $font-size-title;
+    .toolbar-title-md {
+        font-size: inherit;
+    }
+    h1 {
+        margin-top: 0;
+        font-size: inherit;
+        margin-bottom: 0;
+    }
+}
+
+.actionBar {
+    position: fixed;
+    bottom: 56px;
+    width: 100%;
+    left: 0;
+    padding: 1em;
+    background: $gradient-left;
+    color: white;
+
+    
+
+    div {
+        display: inline-block;
+        margin-right: 3em;
+    }
+
+    button {
+        @include pillBtn();
+    }
+}

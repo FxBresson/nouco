@@ -2,8 +2,8 @@
 
 <ion-tabs>
   <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="My Services" tabIcon="information-circle"></ion-tab>
-  <ion-tab (ionSelect)="goToHighlightedService()" tabTitle="Service spécial" tabIcon="information-circle"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="My Workshop" tabIcon="contacts"></ion-tab>
-  <ion-tab [root]="tab4Root" tabTitle="My Profile" tabIcon="contacts"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Services" tabIcon="information-circle"></ion-tab>
+  <ion-tab [root]="middleTabRoot" [rootParams]="highlightedService" tabTitle="Repas" tabIcon="information-circle"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="Ateliers" tabIcon="contacts"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="Profil" tabIcon="contacts"></ion-tab>
 </ion-tabs>

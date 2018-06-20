@@ -22,7 +22,7 @@ export class CategorieComponent {
 
   goToCat(categorie) {
     this.navCtrl.push(SearchPage, {
-      categorie: categorie
+      category: categorie
     });
   }
 

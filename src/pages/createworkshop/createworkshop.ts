@@ -39,6 +39,7 @@ export class CreateWorkshopPage {
         id: null,
         host: 1,
         title: this.formHandler.value.title,
+        image: "assets/imgs/workshops/ux.jpeg",
         description: this.formHandler.value.description,
         date: new Date(this.formHandler.value.date).getTime(),
         place: this.formHandler.value.place

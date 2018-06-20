@@ -18,16 +18,17 @@ export class TabsPage {
   tab2Root = MyServicesPage;
   tab3Root = MyWorkshopsPage;
   tab4Root = ProfilePage;
+  middleTabRoot = ServicePage;
+
+  highlightedService;
 
   constructor(private navCtrl: NavController, private apiProvider: ApiRequestProvider) {
-
+    this.apiProvider.get('/services/3').then(function(service) {
+     this.highlightedService = {service: service};
+    }.bind(this))
   }
 
   goToHighlightedService() {
-    this.apiProvider.get('/services/3').then(function(service) {
-      this.navCtrl.push(ServicePage, {
-        service: service
-      })
-    }.bind(this))
+    
   }
 }

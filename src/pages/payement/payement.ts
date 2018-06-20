@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { ConfirmationPage } from '../confirmation/confirmation';
 import { ApiRequestProvider } from '../../providers/api-request/api-request';
 

@@ -1,10 +1,16 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Mes ateliers</ion-title>
+    </ion-navbar>
+</ion-header>
 <ion-content>
-    <div>
-        <button (click)="showPastWS(true)">Past</button>
-        <button (click)="showPastWS(false)">Soon</button>
+    <div class="selectListBtns">
+        <button [ngClass]="{selected: listShown=='pastWS'}" (click)="showList('pastWS')">pastWS</button>
+        <button [ngClass]="{selected: listShown=='futurWS'}" (click)="showList('futurWS')">futurWS</button>
+        <button [ngClass]="{selected: listShown=='futurHostedWS'}" (click)="showList('futurHostedWS')">futurHostedWS</button>
     </div>
 
-    <ion-list *ngIf="showPast">
+    <ion-list *ngIf="listShown=='pastWS'">
         <ion-item *ngFor="let card of pastWS">
             <workshop
                 [workshop]= card
@@ -13,7 +19,7 @@
         </ion-item>
     </ion-list>
 
-    <ion-list *ngIf="!showPast">
+    <ion-list *ngIf="listShown=='futurWS'">
         <ion-item *ngFor="let card of futurWS">
             <workshop
                 [workshop]= card
@@ -22,8 +28,17 @@
         </ion-item>
     </ion-list>
 
-    <ion-fab>
-        <button ion-fab (click)="createWorkshop()">Add Workshop</button>
+    <ion-list *ngIf="listShown=='futurHostedWS'">
+        <ion-item *ngFor="let card of futurHostedWS">
+            <workshop
+                [workshop]= card
+            >
+            </workshop>
+        </ion-item>
+    </ion-list>
+
+    <ion-fab bottom right>
+        <button ion-fab (click)="createWorkshop()">+</button>
     </ion-fab>
 
 </ion-content>

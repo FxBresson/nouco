@@ -1,3 +1,11 @@
 search-bar {
+    width: 80%;
+    display: block;
+    margin: auto;
 
+    
+    ion-list {
+        position: absolute;
+        width: 80%;
+    }
 }

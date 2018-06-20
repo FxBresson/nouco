@@ -1,3 +1,9 @@
+<ion-header>
+    <ion-navbar>
+        Créer un atelier
+    </ion-navbar>
+</ion-header>
+
 <ion-content padding>
     <form (submit)=createWorkshop($event)>
 
@@ -20,7 +26,9 @@
             <ion-textarea placeholder="Enter a description" [formControl]="formHandler.controls['description']"></ion-textarea>
         </ion-item>
 
-        <button type="submit">Ajouter</button>
+        <div class="actionBar">
+            <button type="submit">Créer un atelier</button>
+        </div>
     </form>
 </ion-content>
   

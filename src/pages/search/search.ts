@@ -16,25 +16,42 @@ import { ApiRequestProvider } from '../../providers/api-request/api-request';
 })
 export class SearchPage {
 
-  categorieId;
+  categoryId;
   workshops: Array<any> = [];
   services: Array<any> = [];
+  mySearch: String;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: ApiRequestProvider) {
-    
   
   }
 
   ionViewDidLoad() {
-    this.categorieId = this.navParams.get('categorie').id
+    this.categoryId = this.navParams.get('category').id
+    this.mySearch = this.navParams.get('mySearch')
 
-    if (this.categorieId == 1) {
+
+    console.log(this.mySearch)
+
+    if (this.categoryId == 1) {
       this.apiProvider.getWorkshop('/workshops', function(workshops) {
-        this.workshops= workshops;
+        if (this.mySearch) {
+          this.workshops= workshops.filter((item) => {
+            return (item.title.toLowerCase().indexOf(this.mySearch) > -1);
+          });
+        } else {
+          this.workshops= workshops
+        }
+        
       }.bind(this))
     } else {
-      this.apiProvider.get('/services?cat=' + this.categorieId).then(function(services) {
-        this.services = services;
+      this.apiProvider.get('/services?cat=' + this.categoryId).then(function(services) {
+        if (this.mySearch) {
+          this.services = services.filter((item) => {
+            return (item.title.toLowerCase().indexOf(this.mySearch) > -1);
+          });
+        } else {
+          this.services = services
+        }
       }.bind(this))
     }
     
