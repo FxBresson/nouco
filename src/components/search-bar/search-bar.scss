@@ -4,8 +4,10 @@ search-bar {
     margin: auto;
 
     
-    ion-list {
+    ion-list.list-md {
         position: absolute;
         width: 80%;
+        margin-top: 0;
+        box-shadow: $shadow;
     }
 }

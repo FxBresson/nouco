@@ -15,6 +15,7 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+@import "../theme/custom-icons";
 
 #gradient {
 }
@@ -32,9 +33,17 @@ ion-searchbar {}
     color: color($colors, light);
 }
 
-workshop, categorie, service {
-    ion-card {
+workshop, categorie, service, page-service {
+    ion-card.card-md {
         position: relative;
+        height: 175px;
+        background-size: cover;
+        background-position: center;
+
+        img {
+            margin-top: -50%;
+            margin-bottom: -50%;          
+        }
     }
     ion-card-header {
         background-color: rgba(255, 255, 255, 0.6);
@@ -47,8 +56,13 @@ workshop, categorie, service {
         & > div {
 
         }
-        h4 {
-    
+        .title {
+            
+        }
+
+        .subTitle {
+            color: color($colors, secondary);
+            font-weight: bold;
         }
     }
 }
@@ -86,7 +100,25 @@ ion-title {
         margin-right: 3em;
     }
 
-    button {
+    button:not(.secondary) {
         @include pillBtn();
+    }
+
+    button.secondary {
+        @include pillBtnSecondary();
+    }
+}
+
+.secondaryText {
+    @include secondaryText();
+}
+
+ion-fab {
+    .btnLabel {
+        max-width: 56px;
+        font-size: 10px;
+        text-transform: uppercase;
+        text-align: center;
+        margin-top: 1em;
     }
 }

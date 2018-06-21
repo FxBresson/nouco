@@ -17,7 +17,7 @@
             {{ service.description }}
         </div>
 
-        <div *ngIf="service.id!=3" >
+        <div *ngIf="service.id!=3 || service.instance" >
             <ion-list *ngFor="let infoCat of service.infos">
                 <h4>{{ infoCat.name }}</h4>
                 <ion-item *ngFor="let option of infoCat.options">{{ option }}</ion-item>
@@ -25,36 +25,33 @@
         </div>
         
 
-        <div *ngIf="service.id==3">
+        <div *ngIf="service.id==3 && !service.instance">
             <ion-list>
                 <h4>{{ service.infos[0].name }}</h4>
                 <ion-item *ngFor="let resto of service.infos[0].options">
-                    <ion-card>
-                        <img src="{{ resto.image }}" alt="">
-                        {{ resto.name }}
+                    <ion-card [style.backgroundImage]="'url('+resto.image+')'">
+                        <ion-card-header>{{ resto.name }}</ion-card-header>
                     </ion-card>
                     <ion-list>
                         <ion-item *ngFor="let menu of resto.menus">
-                            <ion-card>
-                                <img src="menu.image" alt="">
-                                <div>
-                                    {{ menu.name }}
-                                    {{ menu.description }}
-                                    {{ menu.price }}
-                                </div>
-                            </ion-card>
+                            <img src="{{ menu.image }}" alt="">
+                            <div>
+                                <p>{{ menu.name }}</p>
+                                <p>{{ menu.description }}</p>
+                                <p>{{ menu.price }}</p>
+                            </div>
                         </ion-item>
                     </ion-list>
                 </ion-item>
             </ion-list>
             <ion-list>
-                <h4>{{ service.infos[1].name }}</h4>
-                <ion-item *ngFor="let option of service.infos[1].options">{{ option }}</ion-item>
+                <h4>{{ service.infos[2].name }}</h4>
+                <ion-item *ngFor="let option of service.infos[2].options">{{ option }}</ion-item>
             </ion-list>
         </div>
 
         <div class="actionBar" *ngIf="!service.instance">
-            <button (click)="selectService()">Request ce service</button>
+            <button (click)="requestService()">Commander ce service</button>
         </div>
 
     </div>

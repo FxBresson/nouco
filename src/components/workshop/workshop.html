@@ -1,9 +1,8 @@
 <!-- Generated template for the WorkshopComponent component -->
-<ion-card (click)="goToWokshop(workshop)">
-    <ion-card-header>
-        <div>Atelier</div>
-        <h4>{{ workshop.title }}</h4>
-      </ion-card-header>
-    <img class="background-image" src="{{workshop.image}}">
-  </ion-card>
+<ion-card (click)="goToWokshop(workshop)" [style.backgroundImage]="'url('+workshop.image+')'">
+  <ion-card-header>
+      <div class="subTitle">Atelier</div>
+      <div class="title">{{ workshop.title }}</div>
+    </ion-card-header>
+</ion-card>
   

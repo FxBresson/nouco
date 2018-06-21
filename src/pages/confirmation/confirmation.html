@@ -7,21 +7,24 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Réservation du service confirmée</ion-title>
+    <img src="assets/imgs/progress/3.png">
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
   <div *ngIf="method=='physic'">
-    <img>
-    <p>Voici le QR Code</p>
+    <p class="secondaryText">Paiement</p>    
+    <img class="qrcode" src="assets/imgs/qrcode.png">
+    <div>Présentez ce QR Code au concierge au moment du retrait</div>
   </div>
 
   <div *ngIf="method=='credit'">
-    <p>Vous avez été débités</p>
+    <p class="secondaryText">Vous avez été débité</p>
   </div>
   
-
-  <button (click)="goBackToHome()">OK</button>
+  <div class="actionBar">
+    <button class="secondary" (click)="goBackToHome()">C'est payé</button>
+  </div>
 
 </ion-content>

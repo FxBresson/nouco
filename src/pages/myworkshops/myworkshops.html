@@ -5,9 +5,9 @@
 </ion-header>
 <ion-content>
     <div class="selectListBtns">
-        <button [ngClass]="{selected: listShown=='pastWS'}" (click)="showList('pastWS')">pastWS</button>
-        <button [ngClass]="{selected: listShown=='futurWS'}" (click)="showList('futurWS')">futurWS</button>
-        <button [ngClass]="{selected: listShown=='futurHostedWS'}" (click)="showList('futurHostedWS')">futurHostedWS</button>
+        <button [ngClass]="{selected: listShown=='futurWS'}" (click)="showList('futurWS')">Bientôt</button>        
+        <button [ngClass]="{selected: listShown=='futurHostedWS'}" (click)="showList('futurHostedWS')">Mes ateliers</button>
+        <button [ngClass]="{selected: listShown=='pastWS'}" (click)="showList('pastWS')">Ateliers passés</button>
     </div>
 
     <ion-list *ngIf="listShown=='pastWS'">
@@ -38,7 +38,8 @@
     </ion-list>
 
     <ion-fab bottom right>
-        <button ion-fab (click)="createWorkshop()">+</button>
+        <button ion-fab (click)="createWorkshop()"><ion-icon name="add"></ion-icon></button>
+        <div class="btnLabel">CRÉER UN ATELIER</div>
     </ion-fab>
 
 </ion-content>

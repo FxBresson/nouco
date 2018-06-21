@@ -1,7 +1,12 @@
 page-myworkshops {
     .selectListBtns {
+        padding: 1em;
+        display: flex;
+        justify-content: space-evenly;
+        
         button {
-            @include pillBtn()
+            @include pillBtn();
+            box-shadow: $shadow;
 
             &.selected {
                 color: color($colors, secondary);

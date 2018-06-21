@@ -1,3 +1,14 @@
 page-confirmation {
+    .scroll-content {
+        padding-bottom: 100px !important;
+    }
 
+    .qrcode {
+        display: block;
+        margin: auto;
+
+        & + div {
+            text-align: center;
+        }
+    }
 }

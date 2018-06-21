@@ -2,4 +2,41 @@ page-payement {
     .scroll-content {
         padding-bottom: 100px !important;
     }
+
+    .paymentMethod > div {
+        width: 40vw;
+        height: 40vw;
+        max-height: 400px;
+        margin: 0 3vw;
+        text-align: center;
+        display: inline-block;
+        box-shadow: $shadow;
+        border: 1px #aaa solid;
+        padding: 10%;
+        box-sizing: border-box;
+
+
+        img {
+            display: block;   
+            margin: auto;
+            margin-bottom: 1em;
+            width: 100px;         
+        }
+
+        .payementIcon-selected {
+            display: none
+        }
+
+        &.selected {
+            color: color($colors, secondary);
+
+            .payementIcon {
+                display: none;
+            }
+    
+            .payementIcon-selected {
+                display: block
+            }
+        }
+    }
 }

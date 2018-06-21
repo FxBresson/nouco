@@ -29,9 +29,9 @@
       </div>
 
       <div class="infos">
-        <div><b>Le :</b>{{ workshop.day }}</div>
-        <div><b>A :</b>{{ workshop.time }}</div>
-        <div><b>A :</b>{{ workshop.place }}</div>
+        <div><b>Le : </b>{{ workshop.day }}</div>
+        <div><b>A : </b>{{ workshop.time }}</div>
+        <div><b>A : </b>{{ workshop.place }}</div>
       </div>
 
       <div class="description">
@@ -50,7 +50,7 @@
     </div>
  
     <div class="actionBar" *ngIf="!workshop.instance">
-        <div *ngIf="workshop.contributors">Deja <b>{{ workshop.contributors.length }} participants !</b></div>
-        <button (click)="register()">Y Participer</button>
+        <div *ngIf="workshop.contributors">Déjà <b>{{ workshop.contributors.length }} participants !</b></div>
+        <button (click)="register()">Je articipee</button>
     </div>
 </ion-content>

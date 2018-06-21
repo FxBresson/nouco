@@ -7,24 +7,32 @@
 <ion-header>
   <ion-navbar>
     <ion-title><h1>Réserver</h1></ion-title>
+    <img src="assets/imgs/progress/2.png">
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
 
-  <div>
+  <div class="secondaryText">Choix de paiment</div>
 
-    <div (click)="selectPayement('physic')" [ngClass]="{selected: method=='physic'}">Sur place</div>
-    <div (click)="selectPayement('credit')" [ngClass]="{selected: method=='credit'}">Par crédit</div>
-
+  <div class="paymentMethod">
+    <div (click)="selectPayement('physic')" [ngClass]="{selected: method=='physic'}">
+      <img src="assets/icon/physic.png" class="payementIcon">
+      <img src="assets/icon/physic_selected.png" class="payementIcon-selected">
+      <div>Sur place</div>
+    </div>
+    <div (click)="selectPayement('credit')" [ngClass]="{selected: method=='credit'}">
+        <img src="assets/icon/credit.png" class="payementIcon">
+        <img src="assets/icon/credit_selected.png" class="payementIcon-selected">
+      <div>Par crédit</div>
+    </div>
   </div>
 
-  <h3>Récapitulatif</h3>
-  <p></p>
+  <div class="secondaryText">Récapitulatif</div>
 
   <div class="actionBar" *ngIf="!service.instance">
-      <button (click)="confirm()">Confirmer</button>
+      <button class="secondary" (click)="confirm()">Confirmer</button>
   </div>
 
 

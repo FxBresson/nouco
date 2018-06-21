@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ApiRequestProvider {
 
-  public apiUrl: String = 'http://localhost:3000'
+  public apiUrl: String = 'http://api.fxbresson.fr:3000'
 
   constructor(public http: HttpClient) {
     

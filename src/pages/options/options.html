@@ -6,26 +6,57 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Réserver</ion-title>
+    <ion-title><h1>Réserver</h1></ion-title>
+    <img src="assets/imgs/progress/1.png">
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <div>
-      <h3>{{ service.title }}</h3>
-      <h4>{{ service.categorie }}</h4>
-  </div>
+  <div class="secondaryText">Faites votre choix</div>
 
   <form (ngSubmit)="askService($event)" [formGroup]="formHandler">
-    <ion-item *ngFor="let infoCat of service.infos">
-      <ion-select multiple="false" [formControl]=formHandler.controls[infoCat.formName]>
-        <ion-label>{{ infoCat.name }}</ion-label>
-        <ion-option *ngFor="let option of infoCat.options" [value]="option">{{ option }}</ion-option>
-      </ion-select>
-    </ion-item>
 
-    <div>
-        <button type="submit">Y Participer</button>
+    <div *ngIf="service.id!=3" >
+      <ion-item *ngFor="let infoCat of service.infos">
+        <ion-select multiple="false" [formControl]=formHandler.controls[infoCat.formName]>
+          <ion-label>{{ infoCat.name }}</ion-label>
+          <ion-option *ngFor="let option of infoCat.options" [value]="option">{{ option }}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <div *ngIf="service.id==3" >
+      <ion-item>
+          <ion-select multiple="false" [formControl]="formHandler.controls['restaurant']" 
+                                       [(ngModel)]="selectedResto" 
+                                       (ionChange)="onRestoChange()" 
+                                       [placeholder]="service.infos[0].name">
+            <ion-label>{{ service.infos[0].name }}</ion-label>
+            <ion-option *ngFor="let option of service.infos[0].options" [value]="option.name">{{ option.name }}</ion-option>
+          </ion-select>
+      </ion-item>
+
+      <ion-item>
+          <ion-select multiple="false" [formControl]="formHandler.controls['menu']"
+                                       [placeholder]="service.infos[1].name">
+            <ion-label>{{ service.infos[1].name }}</ion-label>
+            <ion-option *ngFor="let option of menusOptions" [value]="option.name">{{ option.name }}</ion-option>
+          </ion-select>
+      </ion-item>
+
+
+      <ion-item>
+          <ion-select multiple="false" [formControl]="formHandler.controls['slot']"
+                                       [placeholder]="service.infos[2].name">
+            <ion-label>{{ service.infos[2].name }}</ion-label>
+            <ion-option *ngFor="let option of service.infos[2].options" [value]="option">{{ option }}</ion-option>
+          </ion-select>
+      </ion-item>
+
+    </div>
+
+    <div class="actionBar">
+      <button class="secondary" type="submit">Je commande</button>
     </div>
   </form>
 

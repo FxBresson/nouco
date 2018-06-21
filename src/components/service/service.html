@@ -1,8 +1,7 @@
 <!-- Generated template for the ServiceComponent component -->
-<ion-card (click)="goToService(service)">
+<ion-card (click)="goToService(service)" [style.backgroundImage]="'url('+service.image+')'">
   <ion-card-header>
-    <div>{{ service.cat.title }}</div>
-    <h4>{{ service.title }}</h4>
+    <div class="subTitle">{{ service.cat.title }}</div>
+    <div class="title">{{ service.title }}</div>
   </ion-card-header>
-  <img class="background-image" src="{{service.image}}">
 </ion-card>

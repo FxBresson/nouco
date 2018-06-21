@@ -45,10 +45,10 @@ export class CreateWorkshopPage {
         place: this.formHandler.value.place
       })
       let addAlert= this.alertCtrl.create({
-        title: 'Workshop added',
-        subTitle: 'Your wokshop has successfully been created',
+        title: 'Atelier',
+        subTitle: 'Votre atelier a été créé !',
         buttons: [{
-          text: 'Awesome !',
+          text: 'OK',
           handler: () => {
             this.navCtrl.popTo(this.navCtrl.getByIndex(0))
           }

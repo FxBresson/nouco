@@ -53,7 +53,7 @@ export class SearchBarComponent {
   goToCat(cat) {
     this.navCtrl.push(SearchPage, {
       category: cat,
-      mySearch: this.mySearch
+      mySearch: this.mySearch.toLowerCase()
     });
   }
 
